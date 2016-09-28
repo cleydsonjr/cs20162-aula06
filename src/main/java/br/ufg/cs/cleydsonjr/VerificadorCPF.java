@@ -45,4 +45,8 @@ public class VerificadorCPF {
         return digitoVerificador1 == digito10 && digitoVerificador2 == digito11;
     }
 
+    public boolean verifiqueUsandoLoop(int[] cpfInformado) {
+        // TODO: Implementar
+        return false;
+    }
 }
