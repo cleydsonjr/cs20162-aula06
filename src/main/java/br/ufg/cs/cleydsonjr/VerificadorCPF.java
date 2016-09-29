@@ -86,9 +86,36 @@ public class VerificadorCPF {
      * @return O resultado da verificação se o CPF informado é válido
      */
     public boolean verifiqueUsandoLoopDesenvolvido(int[] cpfInformado) {
-        // TODO: Implementar
+        // Verificando se o Array fornecido tem o tamanho correto
+        valideArrayFornecido(cpfInformado);
 
-        return false;
+        // Extraindo digitos do Array
+        int digito1 = cpfInformado[0];
+        int digito2 = cpfInformado[1];
+        int digito3 = cpfInformado[2];
+        int digito4 = cpfInformado[3];
+        int digito5 = cpfInformado[4];
+        int digito6 = cpfInformado[5];
+        int digito7 = cpfInformado[6];
+        int digito8 = cpfInformado[7];
+        int digito9 = cpfInformado[8];
+        int digito10 = cpfInformado[9];
+        int digito11 = cpfInformado[10];
+
+        // Obtendo primeira soma
+        int primeiraSoma = digito9 + digito8 + digito7 + digito6 + digito5 + digito4 + digito3 + digito2 + digito1;
+        // Obtendo segunda soma
+        int segundaSoma = digito9 * 9 + digito8 * 8 + digito7 * 7 + digito6 * 6 + digito5 * 5 + digito4 * 4 + digito3 * 3 + digito2 * 2 + digito1;
+
+        // Obtendo primeiro digito verificador
+        int digitoVerificador1 = (segundaSoma % 11) % 10;
+
+        // Obtendo segundo digito verificador
+        int auxiliar = segundaSoma - primeiraSoma + 9 * digitoVerificador1;
+        int digitoVerificador2 = (auxiliar % 11) % 10;
+
+        // Comparando digitos calculados com os fornecidos
+        return digitoVerificador1 == digito10 && digitoVerificador2 == digito11;
     }
 
     /**
