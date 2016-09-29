@@ -8,6 +8,7 @@ public class VerificadorCPF {
 
     /**
      * Verifica a validade de um CPF fornecido usando um algoritimo baseado em soma simples dos digitos
+     * Equivalente ao "Algoritimo 22" da especificação da atividade: ´CPF(d[])´
      *
      * @param cpfInformado Array de inteiros contendo os 11 digitos do CPF
      * @return O resultado da verificação se o CPF informado é válido
@@ -46,6 +47,7 @@ public class VerificadorCPF {
     /**
      * Verifica a validade de um CPF fornecido usando uma variação do algoritimo similar avaliação de um
      * polinômio pelo Método de Horner.
+     * Equivalente ao "Algoritimo 23" da especificação da atividade: ´CPF2(d[])´
      *
      * @param cpfInformado Array de inteiros contendo os 11 digitos do CPF
      * @return O resultado da verificação se o CPF informado é válido
@@ -75,6 +77,18 @@ public class VerificadorCPF {
 
         // Comparando digitos calculados com os fornecidos
         return digitoVerificador1 == digito10 && digitoVerificador2 == digito11;
+    }
+
+    /**
+     * Verifica a validade de um CPF fornecido usando uma variação do algoritimo "verifiqueUsandoLoop", removendo o Loop
+     *
+     * @param cpfInformado Array de inteiros contendo os 11 digitos do CPF
+     * @return O resultado da verificação se o CPF informado é válido
+     */
+    public boolean verifiqueUsandoLoopDesenvolvido(int[] cpfInformado) {
+        // TODO: Implementar
+
+        return false;
     }
 
     /**
