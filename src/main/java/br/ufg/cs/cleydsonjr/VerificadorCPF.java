@@ -14,9 +14,7 @@ public class VerificadorCPF {
      */
     public boolean verifiqueUsandoSomaSimples(int[] cpfInformado) {
         // Verificando se o Array fornecido tem o tamanho correto
-        if (cpfInformado.length != TAMANHO_CPF) {
-            throw new IllegalArgumentException("CPF com número incorreto de dígitos fornecido");
-        }
+        valideArrayFornecido(cpfInformado);
 
         // Extraindo digitos do Array
         int digito1 = cpfInformado[0];
@@ -45,8 +43,50 @@ public class VerificadorCPF {
         return digitoVerificador1 == digito10 && digitoVerificador2 == digito11;
     }
 
+    /**
+     * Verifica a validade de um CPF fornecido usando uma variação do algoritimo similar avaliação de um
+     * polinômio pelo Método de Horner.
+     *
+     * @param cpfInformado Array de inteiros contendo os 11 digitos do CPF
+     * @return O resultado da verificação se o CPF informado é válido
+     */
     public boolean verifiqueUsandoLoop(int[] cpfInformado) {
-        // TODO: Implementar
-        return false;
+        // Verificando se o Array fornecido tem o tamanho correto
+        valideArrayFornecido(cpfInformado);
+
+        int digito10 = cpfInformado[9];
+        int digito11 = cpfInformado[10];
+
+        int primeiraSoma = cpfInformado[8];
+        int segundaSoma = cpfInformado[8];
+
+        // Iterando sobre digitos para obter as somas
+        for (int i = 7; i >= 0; i--) {
+            primeiraSoma += cpfInformado[i];
+            segundaSoma += primeiraSoma;
+        }
+
+        // Obtendo primeiro digito verificador
+        int digitoVerificador1 = (segundaSoma % 11) % 10;
+
+        // Obtendo segundo digito verificador
+        int auxiliar = segundaSoma - primeiraSoma + 9 * digitoVerificador1;
+        int digitoVerificador2 = (auxiliar % 11) % 10;
+
+        // Comparando digitos calculados com os fornecidos
+        return digitoVerificador1 == digito10 && digitoVerificador2 == digito11;
     }
+
+    /**
+     * Metodo auxiliar para validação simples do array com os digitos de um CPF
+     *
+     * @param cpfInformado Array com CPF para validar
+     */
+    private void valideArrayFornecido(int[] cpfInformado) {
+        // Array deve ter 11 digitos
+        if (cpfInformado.length != TAMANHO_CPF) {
+            throw new IllegalArgumentException("CPF com número incorreto de dígitos fornecido");
+        }
+    }
+
 }

@@ -19,7 +19,7 @@ public class VerificadorCPFUsandoSomaSimplesTest {
     }
 
     @Test
-    public void deveLancarExcacaoParaCPFComNumeroInvalidoDeDigitos() throws Exception {
+    public void deveLancarExcecaoParaCPFComNumeroInvalidoDeDigitos() throws Exception {
         expectedEx.expect(IllegalArgumentException.class);
         expectedEx.expectMessage("CPF com número incorreto de dígitos fornecido");
 
