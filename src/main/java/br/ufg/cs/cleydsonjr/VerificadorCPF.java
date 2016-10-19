@@ -180,16 +180,17 @@ public class VerificadorCPF {
 
         // Obtendo primeira soma
         int primeiraSoma = digito9 + digito8 + digito7 + digito6 + digito5 + digito4 + digito3 + digito2 + digito1;
+
         // Obtendo segunda soma
-        int segundaSoma = digito9;
-        segundaSoma = segundaSoma * NOVE + digito8;
-        segundaSoma = segundaSoma * OITO + digito7;
-        segundaSoma = segundaSoma * SETE + digito6;
-        segundaSoma = segundaSoma * SEIS + digito5;
-        segundaSoma = segundaSoma * CINCO + digito4;
-        segundaSoma = segundaSoma * QUATRO + digito3;
-        segundaSoma = segundaSoma * TRES + digito2;
-        segundaSoma = segundaSoma * DOIS + digito1;
+        int segundaSoma = digito9 * NOVE;
+        segundaSoma += digito8 * OITO;
+        segundaSoma += digito7 * SETE;
+        segundaSoma += digito6 * SEIS;
+        segundaSoma += digito5 * CINCO;
+        segundaSoma += digito4 * QUATRO;
+        segundaSoma += digito3 * TRES;
+        segundaSoma += digito2 * DOIS;
+        segundaSoma += digito1;
 
         // Obtendo primeiro digito verificador
         int digitoVerificador1 = (segundaSoma % TAMANHO_CPF) % DEZ;
